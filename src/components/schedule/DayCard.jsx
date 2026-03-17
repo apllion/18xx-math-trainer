@@ -12,6 +12,7 @@ export default function DayCard({ day, isToday, onToggle }) {
         <span className={styles.checkmark}>{day.completed ? '✓' : ''}</span>
       </div>
       <p className={styles.activity}>{day.activity}</p>
+      {day.description && <p className={styles.description}>{day.description}</p>}
     </Card>
   );
 }

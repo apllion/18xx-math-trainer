@@ -2,13 +2,34 @@ import useLocalStorage from './useLocalStorage';
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_ACTIVITIES = [
-  'Mental Math Drills',
-  'Stock Valuation Drills',
-  'Route Optimization Drills',
-  'Game Analysis',
-  'Puzzle Scenarios',
-  'Live Play / Practice',
-  'Post-Mortem Review',
+  {
+    name: 'Mental Math Drills',
+    description: 'Market cap, emergency buy, and withhold ratio calculations. Focus on speed — aim for under 10 seconds per question.',
+  },
+  {
+    name: 'Stock Valuation Drills',
+    description: 'Par value decisions, portfolio concentration, and yield vs stock jump analysis. Practice comparing investment alternatives.',
+  },
+  {
+    name: 'Route Optimization Drills',
+    description: 'Train rush clock, token ROI, and liquidation value problems. Build intuition for operating round decisions.',
+  },
+  {
+    name: 'Game Analysis',
+    description: 'Study a recorded game (yours or online). Identify the inflection point, trace train timing, and note key stock round decisions.',
+  },
+  {
+    name: 'Puzzle Scenarios',
+    description: 'Work through "what would you do?" positions: forced train buys, dump timing, end-game portfolio optimization.',
+  },
+  {
+    name: 'Live Play / Practice',
+    description: 'Play a full game (in person or on 18xx.games). Focus on applying one concept from this week\'s drills.',
+  },
+  {
+    name: 'Post-Mortem Review',
+    description: 'Write up your game from Saturday. Identify your biggest mistake, the key turning point, and one lesson to carry forward.',
+  },
 ];
 
 function getWeekKey(date) {
@@ -24,7 +45,8 @@ function createWeek(weekKey) {
     weekKey,
     days: DAY_LABELS.map((label, i) => ({
       label,
-      activity: DAY_ACTIVITIES[i],
+      activity: DAY_ACTIVITIES[i].name,
+      description: DAY_ACTIVITIES[i].description,
       completed: false,
     })),
   };
