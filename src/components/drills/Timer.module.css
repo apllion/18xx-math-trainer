@@ -1,0 +1,25 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.low .time {
+  color: var(--accent-danger);
+}
+
+.toggleBtn {
+  font-size: var(--font-size-lg);
+  padding: var(--space-xs);
+}

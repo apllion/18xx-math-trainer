@@ -1,0 +1,47 @@
+// 1849: Sicily
+export default {
+  id: '1849',
+  name: '1849: Sicily',
+  playerCount: [3, 4, 5],
+  startingCash: { 3: 500, 4: 375, 5: 300 },
+  currency: 'L',
+  floatPercent: 60,
+  parValues: null, // 1849 uses variable pricing based on stock market
+  hasVariablePar: true,
+  trains: [
+    { name: '2', cost: 100, quantity: 5, rustedBy: '4H' },
+    { name: '4', cost: 200, quantity: 4, rustedBy: '8' },
+    { name: '4H', cost: 400, quantity: 3, rustedBy: '10H' },
+    { name: '6', cost: 600, quantity: 3, rustedBy: '12H' },
+    { name: '8', cost: 800, quantity: 2, rustedBy: '16H' },
+    { name: '10H', cost: 1000, quantity: 2, rustedBy: null },
+    { name: '12H', cost: 1200, quantity: 1, rustedBy: null },
+    { name: '16H', cost: 1600, quantity: 5, rustedBy: null },
+  ],
+  companies: [
+    { abbr: 'AFG', name: 'Azienda Ferroviaria Garibaldi', tokens: 3 },
+    { abbr: 'CTL', name: 'Compagnia Trasporti Litoranei', tokens: 3 },
+    { abbr: 'IFT', name: 'Impresa Ferroviaria Trinacria', tokens: 3 },
+    { abbr: 'RCS', name: 'Rete Centrale Sicula', tokens: 3 },
+    { abbr: 'SFA', name: 'Società Ferroviaria Akragas', tokens: 3 },
+    { abbr: 'SFP', name: 'Società Ferroviaria Peloritana', tokens: 3 },
+  ],
+  privates: [
+    { name: 'Società Corriere Etnee', cost: 20, revenue: 5 },
+    { name: 'Studio di Ingegneria Giuseppe Ferrara', cost: 45, revenue: 10 },
+    { name: 'Società Marittima Siciliana', cost: 90, revenue: 20 },
+    { name: 'Fondazione Ferrovia di Messina', cost: 130, revenue: 25 },
+    { name: 'Regia Società Mineraria', cost: 200, revenue: 40 },
+  ],
+  tokenCosts: [0, 40, 80],
+  typicalRouteValues: {
+    '2': { min: 20, max: 70 },
+    '4': { min: 60, max: 180 },
+    '4H': { min: 80, max: 240 },
+    '6': { min: 120, max: 320 },
+    '8': { min: 160, max: 400 },
+    '10H': { min: 200, max: 500 },
+    '12H': { min: 250, max: 600 },
+    '16H': { min: 300, max: 700 },
+  },
+};

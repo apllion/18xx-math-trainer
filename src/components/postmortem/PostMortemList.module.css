@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.entryCard {
+  transition: background var(--transition-fast);
+}
+
+.entryCard:hover {
+  background: var(--bg-hover);
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.game {
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.date {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.players {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.result {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}

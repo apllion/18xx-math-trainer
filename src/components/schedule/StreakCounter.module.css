@@ -1,0 +1,25 @@
+.streak {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  width: fit-content;
+}
+
+.flame {
+  font-size: 1.5rem;
+}
+
+.count {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--accent-warning);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}

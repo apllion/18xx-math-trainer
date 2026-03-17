@@ -1,0 +1,22 @@
+.questionCard {
+  border-left: 4px solid var(--accent-primary);
+}
+
+.context {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  font-style: italic;
+}
+
+.question {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.hint {
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--accent-warning);
+}
