@@ -3,32 +3,61 @@ import useLocalStorage from './useLocalStorage';
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const DAY_ACTIVITIES = [
   {
-    name: 'Mental Math Drills',
-    description: 'Market cap, emergency buy, and withhold ratio calculations. Focus on speed — aim for under 10 seconds per question.',
+    name: 'SR Math Drills',
+    description: 'Stock Round calculations (20 min).\n\n' +
+      '• Par Value Decision: Given your cash after privates, find the highest par that still leaves you ~$15-20 pocket change for a synergy share.\n' +
+      '• Market Cap: Share Price × 10. Compare to Treasury + Train value — if Market Cap >> assets, the stock is overvalued.\n' +
+      '• Portfolio Concentration: (Value of shares in Company A) ÷ Total Net Worth. If any company is >60%, calculate cost of diversifying.\n' +
+      '• Dump Protection: Can any rival afford 50% of your company? Check their Cash + (Shares × Price).\n' +
+      '• Yield vs Stock Jump: Compare (Dividend × Your Shares) vs buying another share at current price.',
   },
   {
-    name: 'Stock Valuation Drills',
-    description: 'Par value decisions, portfolio concentration, and yield vs stock jump analysis. Practice comparing investment alternatives.',
+    name: 'OR Math Drills',
+    description: 'Operating Round calculations (20 min).\n\n' +
+      '• Rust Horizon: Count trains remaining in bank ÷ companies acting before you. If your trains rust before you run them, plan an E-buy.\n' +
+      '• Withhold Ratio: Retained Earnings ÷ Stock Price Drop. Only withhold if the train you buy earns more than the Net Worth you lose.\n' +
+      '• Emergency Buy: Train Cost - Treasury = your personal contribution. Never E-buy a train that will rust — aim for permanents (5/6/D).\n' +
+      '• Token ROI: Token Cost ÷ Added Revenue per run = ORs to break even. If game ends sooner, skip the token.',
   },
   {
-    name: 'Route Optimization Drills',
-    description: 'Train rush clock, token ROI, and liquidation value problems. Build intuition for operating round decisions.',
+    name: 'End-Game Drills',
+    description: 'Liquidation phase calculations (20 min).\n\n' +
+      '• Net Worth Snap: For each player, calculate Cash + (Shares × Current Price) in under 60 seconds.\n' +
+      '• Final Payout: Expected Dividend × Remaining ORs. High-dividend low-price stock often beats low-dividend high-price.\n' +
+      '• Last Sell Check: Is selling a share for $X now better than holding for a final $Y dividend if the price will crater?\n' +
+      '• Bank Break Timing: Sum of all dividends per OR ≈ drain rate. Bank ÷ drain rate ≈ ORs remaining.',
   },
   {
     name: 'Game Analysis',
-    description: 'Study a recorded game (yours or online). Identify the inflection point, trace train timing, and note key stock round decisions.',
+    description: 'Watch/study a pro game (30 min).\n\n' +
+      '• Watch a high-level game on 18xx.games or a streamed final.\n' +
+      '• Track the Priority Deal — why did the expert Pass instead of buying? Usually to manipulate who starts the next SR.\n' +
+      '• Find the "Infection Point" — the exact turn where the winner\'s trajectory separated from the pack.\n' +
+      '• Was it a train purchase? A stock dump? A specific tile lay?',
   },
   {
     name: 'Puzzle Scenarios',
-    description: 'Work through "what would you do?" positions: forced train buys, dump timing, end-game portfolio optimization.',
+    description: 'Map and position puzzles (30 min).\n\n' +
+      '• Take a company and visualize its optimal route at 5-train/6-train level.\n' +
+      '• Place two enemy tokens in the worst spots — find your Plan B route using 80% of the same track.\n' +
+      '• "Next Buyer" Lookahead: If you buy a train, who is forced to buy next and trigger rusting? If it\'s your rival, buy. If it\'s you, wait.\n' +
+      '• Liquidation Check: Pick an opponent, calculate their Shares × Price + Cash in under 60 seconds.',
   },
   {
-    name: 'Live Play / Practice',
-    description: 'Play a full game (in person or on 18xx.games). Focus on applying one concept from this week\'s drills.',
+    name: 'Live Play',
+    description: 'Play one full game (3 hours).\n\n' +
+      '• Use 18xx.games for a live (not async) match to practice under time pressure.\n' +
+      '• Pick ONE expert goal: "Hold max 50% of any company" or "Force a train rush by turn 4."\n' +
+      '• Winning is secondary — test a specific mechanic from this week\'s drills.\n' +
+      '• During play, practice the calculations from Mon-Wed until they become reflexive.',
   },
   {
-    name: 'Post-Mortem Review',
-    description: 'Write up your game from Saturday. Identify your biggest mistake, the key turning point, and one lesson to carry forward.',
+    name: 'Post-Mortem',
+    description: 'Analyze Saturday\'s game (1.5 hours).\n\n' +
+      '• Look at the final stock chart. Find where the winner\'s line spiked.\n' +
+      '• Check every train you bought: Revenue × Runs it made vs Cost. Did each train pay for itself?\n' +
+      '• A 4-train for $300 that ran 3 times at $40 = $120 return = $180 loss. This is the #1 medium-player mistake.\n' +
+      '• Write up: inflection point, biggest mistake, one lesson to carry forward.',
   },
 ];
 
@@ -58,7 +87,17 @@ export default function useSchedule() {
   const currentWeekKey = getWeekKey(new Date());
 
   function getWeek(weekKey = currentWeekKey) {
-    return scheduleData[weekKey] || createWeek(weekKey);
+    const stored = scheduleData[weekKey];
+    if (!stored) return createWeek(weekKey);
+    // Merge latest activity names and descriptions onto stored data
+    return {
+      ...stored,
+      days: stored.days.map((day, i) => ({
+        ...day,
+        activity: DAY_ACTIVITIES[i].name,
+        description: DAY_ACTIVITIES[i].description,
+      })),
+    };
   }
 
   function toggleDay(weekKey, dayIndex) {
