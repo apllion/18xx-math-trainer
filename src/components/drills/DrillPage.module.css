@@ -1,0 +1,25 @@
+.modeTabs {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.modeTab {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.modeTab:hover {
+  background: var(--bg-hover);
+}
+
+.modeActive {
+  background: var(--accent-primary);
+  color: white;
+}
