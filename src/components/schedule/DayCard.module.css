@@ -25,9 +25,32 @@
   margin-bottom: var(--space-xs);
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
 .dayLabel {
   font-weight: 700;
   font-size: var(--font-size-sm);
+}
+
+.infoBtn {
+  font-size: var(--font-size-base);
+  color: var(--text-muted);
+  padding: 2px;
+  border-radius: 50%;
+  transition: color var(--transition-fast);
+  line-height: 1;
+}
+
+.infoBtn:hover {
+  color: var(--accent-info);
+}
+
+.infoBtnActive {
+  color: var(--accent-info);
 }
 
 .checkmark {
